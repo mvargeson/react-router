@@ -28,3 +28,7 @@ export { formatPattern } from './PatternUtils'
 export browserHistory from './browserHistory'
 export hashHistory from './hashHistory'
 export createMemoryHistory from './createMemoryHistory'
+export createBrowserHistory from 'history/lib/createBrowserHistory'
+export createHashHistory from 'history/lib/createHashHistory'
+
+export default from './Router'
