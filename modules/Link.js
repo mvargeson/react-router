@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import React from 'react'
 import warning from './routerWarning'
 import invariant from 'invariant'
@@ -49,13 +49,12 @@ function createLocationDescriptor(to, { query, hash, state }) {
  *
  *   <Link ... query={{ show: true }} state={{ the: 'state' }} />
  */
-const Link = React.createClass({
-
-  contextTypes: {
+class Link extends React.Component {
+  static contextTypes = {
     router: routerShape
-  },
+  };
 
-  propTypes: {
+  static propTypes = {
     to: oneOfType([ string, object ]),
     query: object,
     hash: string,
@@ -65,16 +64,14 @@ const Link = React.createClass({
     onlyActiveOnIndex: bool.isRequired,
     onClick: func,
     target: string
-  },
+  };
 
-  getDefaultProps() {
-    return {
-      onlyActiveOnIndex: false,
-      style: {}
-    }
-  },
+  static defaultProps = {
+    onlyActiveOnIndex: false,
+    style: {}
+  };
 
-  handleClick(event) {
+  handleClick = (event) => {
     if (this.props.onClick)
       this.props.onClick(event)
 
@@ -100,7 +97,7 @@ const Link = React.createClass({
     const location = createLocationDescriptor(to, { query, hash, state })
 
     this.context.router.push(location)
-  },
+  };
 
   render() {
     const { to, query, hash, state, activeClassName, activeStyle, onlyActiveOnIndex, ...props } = this.props
@@ -137,7 +134,6 @@ const Link = React.createClass({
 
     return <a {...props} onClick={this.handleClick} />
   }
-
-})
+}
 
 export default Link

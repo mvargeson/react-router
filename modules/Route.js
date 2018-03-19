@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import React from 'react'
 import invariant from 'invariant'
 import { createRouteFromReactElement } from './RouteUtils'
@@ -16,19 +16,16 @@ const { string, func } = PropTypes
  * that lead to it are considered "active" and their components are
  * rendered into the DOM, nested in the same order as in the tree.
  */
-const Route = React.createClass({ 
+class Route extends React.Component {
+  static createRouteFromReactElement = createRouteFromReactElement;
 
-  statics: {
-    createRouteFromReactElement
-  },
-
-  propTypes: {
+  static propTypes = {
     path: string,
     component,
     components,
     getComponent: func,
     getComponents: func
-  },
+  };
 
   /* istanbul ignore next: sanity check */
   render() {
@@ -37,7 +34,6 @@ const Route = React.createClass({
       '<Route> elements are for router configuration only and should not be rendered'
     )
   }
-
-})
+}
 
 export default Route
